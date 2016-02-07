@@ -1,0 +1,229 @@
+* Info
+  #+NAME:info
+  | name    | class                    | race | size     | height | weight |
+  |---------+--------------------------+------+----------+--------+--------|
+  | Tennant | Conjurer (teleportation) | Elf  | Medium/5 | 6'4"   |    140 |
+  |---------+--------------------------+------+----------+--------+--------|
+  | level   | xp                       | age  | gender   | points |        |
+  |---------+--------------------------+------+----------+--------+--------|
+  | 20      | 1                        | 265  | male     | 35     |        |
+  opposition school enchantment
+
+  
+* Stats
+** stats
+  #+NAME:stats
+  |     | Total | Bonus | Base | Race | Level | Book | Age | Magic | age |
+  |-----+-------+-------+------+------+-------+------+-----+-------+-----|
+  | Str | 16    | 3     |   10 |      |       |      |  -3 |     6 |   3 |
+  | Dex | 22    | 6     |   14 |    2 |       |      |  -3 |     6 |   3 |
+  | Con | 22    | 6     |   18 |   -2 |       |      |  -3 |     6 |   3 |
+  | Int | 36    | 13    |   18 |    2 |     5 |    3 |   2 |     6 |     |
+  | Wis | 18    | 4     |   10 |      |       |      |   2 |     6 |     |
+  | Cha | 15    | 2     |    7 |      |       |      |   2 |     6 |     |
+  #+TBLFM: $2=vsum($4..$>)::$3=floor(($2-10)/2)
+** hp
+
+  |  hp | con | favored class | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
+  |-----+-----+---------------+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----+----+----+----|
+  | 213 | 120 |            20 | 6 | 6 | 6 | 6 | 6 | 5 | 4 | 4 | 4 |  4 |  3 |  3 |  3 |  2 |  2 |  2 |  2 |  2 |  2 |  1 |
+  #+TBLFM: $2=(remote(info, @4$1) * remote(stats, @4$3)) :: $3=remote(info@4$1) :: $1=vsum($2..$>)
+
+** ac
+  | Ac | flat | touch | base | dex | armor | natural | deflection | shield |
+  |----+------+-------+------+-----+-------+---------+------------+--------|
+  | 36 |   30 |    16 |   10 |   6 |     8 |       5 |          5 |      2 |
+  #+TBLFM: $1=vsum($4..$>):: $2=vsum($4, $6..$>):: $3=vsum($4..$5) :: @2$5=remote(stats,@3$3)
+  
+** saves
+  |      | save | base | ability | magic | misc |
+  |------+------+------+---------+-------+------|
+  | fort |   18 |    6 |       6 |    +6 |      |
+  | ref  |   17 |    6 |       6 |    +5 |      |
+  | wil  |   21 |   12 |       4 |    +5 |      |
+  #+TBLFM: $2=vsum($3..$>)::@2$4=remote(stats,@4$3)::@3$4=remote(stats,@3$3)::@4$4=remote(stats,@6$3)
+  
+Init: 4 + 2 + 2 + 4
+
+* Skills
+  | skill                    | score | ability | mod | ranks |
+  |--------------------------+-------+---------+-----+-------|
+  | bluff                    |    22 |       2 |     |    20 |
+  | diplomacy                |    22 |       2 |     |    20 |
+  | use magic device         |    26 |       2 |   4 |    20 |
+  | craft(tattoo)            |    36 |      13 |   3 |    20 |
+  | knowledge(arcana)        |    36 |      13 |   3 |    20 |
+  | knowledge(dungeoneering) |    36 |      13 |   3 |    20 |
+  | knowledge(nature)        |    36 |      13 |   3 |    20 |
+  | knowledge(planes)        |    36 |      13 |   3 |    20 |
+  | knowledge(religion)      |    36 |      13 |   3 |    20 |
+  | spellcraft               |    36 |      13 |   3 |    20 |
+  | perception               |    26 |       4 |   2 |    20 |
+  | sense motive             |    24 |       4 |     |    20 |
+  |--------------------------+-------+---------+-----+-------|
+  | disguise                 |    22 |       2 |     |    20 |
+  | escape artist            |    24 |       4 |     |    20 |
+  | sleight of hand          |    24 |       4 |     |    20 |
+  #+TBLFM: $2=vsum($3..$>)::@2$3..@4$3=remote(stats,@7$3)::@5$3..@11$3=remote(stats,@5$3)::@12$3..@13$3=remote(stats,@6$3)::@14$3=remote(stats,@7$3)::@15$3..@16$3=remote(stats,@3$3)
+
+* Abilities
+  
+immune to sleep effects
++2 save vs enchantment
++2 to caster level for spell resist
++2 to spellcraft to identify
+Fleet footed
+
+** traits
+   Dangerously curious
+   Warrior of old
+
+** feats
+   scribe scroll
+   improved init (1)
+   craft wonderous item (3)
+   spell penetration (5)
+   greater spell penetration (5 bonus)
+   improved familiar (7)
+   opposition research (9)
+   dazing spell (11)
+   quicken(13)
+   persistent spell (15)
+   spell mastery (15 bonus) 12 spells
+   craft rod (17)
+   inscribe tattoo (19)
+   spell mastery (20 bonus) 13 spells
+
+* Equipment
+
+  | item                               |   cost |
+  |------------------------------------+--------|
+  | headband of mental superiority     |  72000 |
+  | belt of physical perfection        |  72000 |
+  | ring of force                      |   8500 |
+  | amulet of natural armor     +5     |  25000 |
+  | 6 blessed book                     |  37500 |
+  | prayer beads                       |  45800 |
+  | bracers of armor                   |  32000 |
+  | ring of protection       + 5       |  50000 |
+  | pauldrons of unflinching fortitude |  37500 |
+  | implanted orange prism             |  15000 |
+  | helm of opp alignment              |   2000 |
+  | rod quicken greater                |  42500 |
+  | rod quicken lesser                 |   8750 |
+  | rod daze greater                   |  30500 |
+  | rod daze lesser                    |   3500 |
+  |------------------------------------+--------|
+  | adaptation neck tattoo             |   4500 |
+  | mental superiority tattoo          |  72000 |
+  | physical perfection tattoo         |  72000 |
+  | ring of sustenance tattoo          |   2500 |
+  |------------------------------------+--------|
+  | wand of haste                      |  11250 |
+  | wand of death ward                 |  21000 |
+  |------------------------------------+--------|
+  | 9th                             10 |  81000 |
+  | 8th                             10 |  64000 |
+  | 7th                             10 |  49000 |
+  | 6th                             10 |  36000 |
+  | 5th                             15 |  37500 |
+  | 4th                             15 |  25000 |
+  | 3rd                             20 |  18000 |
+  | 2nd                             10 |   4000 |
+  | 1st                             10 |   1000 |
+  |------------------------------------+--------|
+  | total                              | 980300 |
+  #+TBLFM: @>$2=vsum(@2$2..@-2)
+  
+
+* Spells
+  
+spells/day
+| level | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|       | 8 | 7 | 7 | 7 | 7 | 6 | 6 | 6 | 6 |
+
+
+** 1
+   feather fall
+   enlarge person
+   silent image
+   magic missile
+   charm person
+   comprehend languages
+   unseen servant
+   grease
+   protection from evil
+** 2
+   pyrotechnics
+   darkvision 
+   create pit
+   mirror image x2
+   stone call
+   invisibility
+   knock
+   glitterdust
+** 3
+   slow
+   tounges
+   fly
+   displacement
+   spiked pit
+   sleet storm
+   mad monkeys
+   aquous orb
+   ablative sphere
+** 4
+   stone shape x2
+   fear
+   telekinetic charge
+   resilient sphere
+   scrying
+   dim door
+   globe of invulerability
+   teleport
+
+** 5
+   overland flight
+   animal growth
+   suffocation
+   wall of force
+   icy prision
+   dominate person
+   cloudkill
+   hungry pit
+
+** 6
+   disintegrate
+   permanent image
+   cold ice strike
+   true seeing
+   summon monster 6
+   getaway
+   dispell greater
+** 7
+   reverse gravity
+   waves of exaustion
+   mage sword
+   teleport greater x 2
+   banishment
+   caustic eruption
+** 8
+   frightful aspect
+   polymorph any object
+   clenched fist
+   moment of pres x2
+   maze
+   prismatic wall
+** 9
+   time stop
+   wish
+   icy prision mass
+   create demiplane greater
+   mages disjunction x 2
+   mages mag enclosure
+
+* Familiar
+  idris
+  helm of opposite alignment
+
+
