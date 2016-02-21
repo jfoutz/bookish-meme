@@ -13,20 +13,20 @@
 * Stats
 ** stats
   #+NAME:stats
-  |     | Total | Bonus | Base | Race | Level | Book | Age | Magic | age |
-  |-----+-------+-------+------+------+-------+------+-----+-------+-----|
-  | Str | 16    | 3     |   10 |      |       |      |  -3 |     6 |   3 |
-  | Dex | 22    | 6     |   14 |    2 |       |      |  -3 |     6 |   3 |
-  | Con | 22    | 6     |   18 |   -2 |       |      |  -3 |     6 |   3 |
-  | Int | 36    | 13    |   18 |    2 |     5 |    3 |   2 |     6 |     |
-  | Wis | 18    | 4     |   10 |      |       |      |   2 |     6 |     |
-  | Cha | 15    | 2     |    7 |      |       |      |   2 |     6 |     |
+  |     | Total | Bonus | Base | Race | Level | Book | Age | Magic | age | spells |
+  |-----+-------+-------+------+------+-------+------+-----+-------+-----+--------|
+  | Str | 25    | 7     |   10 |      |       |      |   |     6 |   3 |      6 |
+  | Dex | 25    | 7     |   14 |    2 |       |      |   |     6 |   3 |        |
+  | Con | 29    | 9     |   18 |   -2 |       |      |   |     6 |   3 |      4 |
+  | Int | 37    | 13    |   18 |    2 |     5 |    3 |   3 |     6 |     |        |
+  | Wis | 19    | 4     |   10 |      |       |      |   3 |     6 |     |        |
+  | Cha | 16    | 3     |    7 |      |       |      |   3 |     6 |     |        |
   #+TBLFM: $2=vsum($4..$>)::$3=floor(($2-10)/2)
 ** hp
 
   |  hp | con | favored class | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
   |-----+-----+---------------+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----+----+----+----|
-  | 213 | 120 |            20 | 6 | 6 | 6 | 6 | 6 | 5 | 4 | 4 | 4 |  4 |  3 |  3 |  3 |  2 |  2 |  2 |  2 |  2 |  2 |  1 |
+  | 273 | 180 |            20 | 6 | 6 | 6 | 6 | 6 | 5 | 4 | 4 | 4 |  4 |  3 |  3 |  3 |  2 |  2 |  2 |  2 |  2 |  2 |  1 |
   #+TBLFM: $2=(remote(info, @4$1) * remote(stats, @4$3)) :: $3=remote(info@4$1) :: $1=vsum($2..$>)
 
 ** ac
@@ -43,7 +43,7 @@
   | wil  |   21 |   12 |       4 |    +5 |      |
   #+TBLFM: $2=vsum($3..$>)::@2$4=remote(stats,@4$3)::@3$4=remote(stats,@3$3)::@4$4=remote(stats,@6$3)
   
-Init: 4 + 2 + 2 + 4
+Init: 4 + 2 + 2 + 6
 
 * Skills
   | skill                    | score | ability | mod | ranks |
@@ -91,48 +91,46 @@ Fleet footed
    persistent spell (15)
    spell mastery (15 bonus) 12 spells
    craft rod (17)
-   inscribe tattoo (19)
-   spell mastery (20 bonus) 13 spells
+   spell mastery (19) 13 spells
+   immortality(20 bonus)
 
 * Equipment
 
-  | item                               |   cost |
-  |------------------------------------+--------|
-  | headband of mental superiority     |  72000 |
-  | belt of physical perfection        |  72000 |
-  | ring of force                      |   8500 |
-  | amulet of natural armor     +5     |  25000 |
-  | 6 blessed book                     |  37500 |
-  | prayer beads                       |  45800 |
-  | bracers of armor                   |  32000 |
-  | ring of protection       + 5       |  50000 |
-  | pauldrons of unflinching fortitude |  37500 |
-  | implanted orange prism             |  15000 |
-  | helm of opp alignment              |   2000 |
-  | rod quicken greater                |  42500 |
-  | rod quicken lesser                 |   8750 |
-  | rod daze greater                   |  30500 |
-  | rod daze lesser                    |   3500 |
-  |------------------------------------+--------|
-  | adaptation neck tattoo             |   4500 |
-  | mental superiority tattoo          |  72000 |
-  | physical perfection tattoo         |  72000 |
-  | ring of sustenance tattoo          |   2500 |
-  |------------------------------------+--------|
-  | wand of haste                      |  11250 |
-  | wand of death ward                 |  21000 |
-  |------------------------------------+--------|
-  | 9th                             10 |  81000 |
-  | 8th                             10 |  64000 |
-  | 7th                             10 |  49000 |
-  | 6th                             10 |  36000 |
-  | 5th                             15 |  37500 |
-  | 4th                             15 |  25000 |
-  | 3rd                             20 |  18000 |
-  | 2nd                             10 |   4000 |
-  | 1st                             10 |   1000 |
-  |------------------------------------+--------|
-  | total                              | 980300 |
+  | item                                      |   cost |
+  |-------------------------------------------+--------|
+  | headband of mental superiority            |  72000 |
+  | belt of physical perfection               |  72000 |
+  | ring of force and sustenance              |   8500 |
+  | amulet of natural armor     +5            |  25000 |
+  | 6 blessed book                            |  37500 |
+  | prayer beads                              |  45800 |
+  | bracers of armor                          |  32000 |
+  | ring of protection andadaptation      + 5 |  50000 |
+  | pauldrons of unflinching fortitude        |  37500 |
+  | implanted orange prism                    |  15000 |
+  | helm of opp alignment                     |   2000 |
+  | rod quicken greater                       |  42500 |
+  | rod quicken lesser                        |   8750 |
+  | rod daze greater                          |  30500 |
+  | rod daze lesser                           |   3500 |
+  | haversack                                 |   1000 |
+  |-------------------------------------------+--------|
+  | ring of sustenance tattoo                 |   2500 |
+  |-------------------------------------------+--------|
+  | wand of haste                             |  11250 |
+  | wand of death ward                        |  21000 |
+  |-------------------------------------------+--------|
+  | 9th                             10        |  81000 |
+  | 8th                             10        |  64000 |
+  | 7th                             10        |  49000 |
+  | 6th                             10        |  36000 |
+  | 5th                             15        |  37500 |
+  | 4th                             15        |  25000 |
+  | 3rd                             20        |  18000 |
+  | 2nd                             10        |   4000 |
+  | 1st                             10        |   1000 |
+  |-------------------------------------------+--------|
+  | total                                     | 980300 |
   #+TBLFM: @>$2=vsum(@2$2..@-2)
   
 
@@ -183,7 +181,7 @@ spells/day
    teleport
 
 ** 5
-   overland flight
+   overland flight *
    animal growth
    suffocation
    wall of force
@@ -193,7 +191,7 @@ spells/day
    hungry pit
 
 ** 6
-   disintegrate
+   disintegrate *
    permanent image
    cold ice strike
    true seeing
@@ -204,7 +202,8 @@ spells/day
    reverse gravity
    waves of exaustion
    mage sword
-   teleport greater x 2
+   teleport greater 
+   age resistance *
    banishment
    caustic eruption
 ** 8
@@ -212,15 +211,152 @@ spells/day
    polymorph any object
    clenched fist
    moment of pres x2
-   maze
+   maze *
    prismatic wall
 ** 9
    time stop
    wish
-   icy prision mass
+   icy prision mass *
    create demiplane greater
    mages disjunction x 2
    mages mag enclosure
+
+* Spellbook
+** 1
+*** feather fall
+*** enlarge person
+*** silent image
+*** magic missile
+*** charm person
+*** comprehend languages
+*** unseen servant
+*** grease
+*** protection from evil
+** 2
+*** pyrotechnics
+*** darkvision
+*** create pit
+*** mirror image
+*** stone call
+*** invisibility
+*** knock
+*** glitterdust
+** 3
+*** slow
+*** tounges
+*** fly
+*** displacement
+*** spiked pit
+*** sleet storm
+*** mad monkeys
+*** aquous orb
+*** ablative sphere
+** 4
+*** stone shape 
+*** fear
+*** telekinetic charge
+*** resilient sphere
+*** scrying
+*** dim door
+*** globe of invulerability
+*** teleport
+
+** 5
+*** overland flight 
+*** animal growth
+*** suffocation
+*** wall of force
+*** icy prision
+*** dominate person
+*** cloudkill
+*** hungry pit
+** 6
+*** disintegrate
+*** permanent image
+*** cold ice strike
+*** true seeing
+*** summon monster 6
+*** getaway
+*** dispell greater
+** 7
+*** banishment
+*** spell turning
+*** teleport trap
+*** caustic eruption
+*** create demiplane lesser
+*** mage's magnificent mansion
+*** phase door
+*** plane shift
+*** summon monster vii
+*** greater arcane sight
+*** scrying, greater
+*** vision
+*** forcecage
+*** prismatic spray
+*** project image
+*** shadow conjuration, greater
+*** simulacrum
+*** subjective reality
+*** control undead
+*** control construct
+*** elemental body iv
+*** firebrand
+*** ice body
+*** magic army
+*** memory of function
+*** polymorph, greater
+*** reverse gravity
+*** statue
+*** limited wish
+*** waves of exaustion
+*** mage sword
+*** teleport greater
+*** age resistance 
+*** banishment
+*** caustic eruption
+*** 
+** 8
+*** mind blank
+*** protection from spells
+*** create demiplane
+*** rift of ruin
+*** summon monster viii
+*** trap the soul
+*** dicern location
+*** polar ray
+*** stormbolts
+*** shadow evocation, greater
+*** clone
+*** horrid wilting
+*** frightful aspect
+*** polymorph any object
+*** clenched fist
+*** moment of pres 
+*** maze 
+*** prismatic wall
+*** form of the dragon 3
+*** iron body
+*** temporal stasis
+** 9
+*** prismatic sphere
+*** create demiplane greater
+*** mages disjunction 
+*** mages mag enclosure
+*** gate
+*** summon monster ix
+*** tsunami
+*** defending sword, mass
+*** crusing hand
+*** shades
+*** astral projection
+*** canopic conversion
+*** suffocation, mass
+*** shapechange
+*** etheraalness
+*** time stop
+*** wish
+*** icy prision mass 
+
 
 * Familiar
   idris
