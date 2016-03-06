@@ -13,20 +13,20 @@
 * Stats
 ** stats
   #+NAME:stats
-  |     | Total | Bonus | Base | Race | Level | Book | Age | Magic | age | spells |
-  |-----+-------+-------+------+------+-------+------+-----+-------+-----+--------|
-  | Str | 25    | 7     |   10 |      |       |      |   |     6 |   3 |      6 |
-  | Dex | 25    | 7     |   14 |    2 |       |      |   |     6 |   3 |        |
-  | Con | 29    | 9     |   18 |   -2 |       |      |   |     6 |   3 |      4 |
-  | Int | 37    | 13    |   18 |    2 |     5 |    3 |   3 |     6 |     |        |
-  | Wis | 19    | 4     |   10 |      |       |      |   3 |     6 |     |        |
-  | Cha | 16    | 3     |    7 |      |       |      |   3 |     6 |     |        |
+  |     | Total | Bonus | Base | Race | Level | Book | Age | Magic |  Spells |
+  |-----+-------+-------+------+------+-------+------+-----+-------+---------|
+  | Str |    22 |     6 |   10 |      |       |      |     |     6 |       6 |
+  | Dex |    22 |     6 |   14 |    2 |       |      |     |     6 |         |
+  | Con |    26 |     8 |   18 |   -2 |       |      |     |     6 |       4 |
+  | Int |    37 |    13 |   18 |    2 |     5 |    3 |   3 |     6 |         |
+  | Wis |    19 |     4 |   10 |      |       |      |   3 |     6 |         |
+  | Cha |    16 |     3 |    7 |      |       |      |   3 |     6 |         |
   #+TBLFM: $2=vsum($4..$>)::$3=floor(($2-10)/2)
 ** hp
 
-  |  hp | con | favored class | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
-  |-----+-----+---------------+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----+----+----+----|
-  | 273 | 180 |            20 | 6 | 6 | 6 | 6 | 6 | 5 | 4 | 4 | 4 |  4 |  3 |  3 |  3 |  2 |  2 |  2 |  2 |  2 |  2 |  1 |
+  |  hp | con | favored class | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | mythic |
+  |-----+-----+---------------+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----+----+----+----+--------|
+  | 256 | 160 |            20 | 6 | 6 | 6 | 6 | 6 | 5 | 4 | 4 | 4 |  4 |  3 |  3 |  3 |  2 |  2 |  2 |  2 |  2 |  2 |  1 |      3 |
   #+TBLFM: $2=(remote(info, @4$1) * remote(stats, @4$3)) :: $3=remote(info@4$1) :: $1=vsum($2..$>)
 
 ** ac
@@ -48,9 +48,9 @@ Init: 4 + 2 + 2 + 6
 * Skills
   | skill                    | score | ability | mod | ranks |
   |--------------------------+-------+---------+-----+-------|
-  | bluff                    |    22 |       2 |     |    20 |
-  | diplomacy                |    22 |       2 |     |    20 |
-  | use magic device         |    26 |       2 |   4 |    20 |
+  | bluff                    |    23 |       3 |     |    20 |
+  | diplomacy                |    23 |       3 |     |    20 |
+  | use magic device         |    27 |       3 |   4 |    20 |
   | craft(tattoo)            |    36 |      13 |   3 |    20 |
   | knowledge(arcana)        |    36 |      13 |   3 |    20 |
   | knowledge(dungeoneering) |    36 |      13 |   3 |    20 |
@@ -61,10 +61,10 @@ Init: 4 + 2 + 2 + 6
   | perception               |    26 |       4 |   2 |    20 |
   | sense motive             |    24 |       4 |     |    20 |
   |--------------------------+-------+---------+-----+-------|
-  | disguise                 |    22 |       2 |     |    20 |
-  | escape artist            |    24 |       4 |     |    20 |
-  | sleight of hand          |    24 |       4 |     |    20 |
-  #+TBLFM: $2=vsum($3..$>)::@2$3..@4$3=remote(stats,@7$3)::@5$3..@11$3=remote(stats,@5$3)::@12$3..@13$3=remote(stats,@6$3)::@14$3=remote(stats,@7$3)::@15$3..@16$3=remote(stats,@3$3)
+  | knowlege (history)       |    33 |      13 |     |    20 |
+  | knowlege (local)         |    33 |      13 |     |    20 |
+  | knowlege (enginering)    |    33 |      13 |     |    20 |
+  #+TBLFM: $2=vsum($3..$>)::@2$3..@4$3=remote(stats,@7$3)::@5$3..@11$3=remote(stats,@5$3)::@12$3..@13$3=remote(stats,@6$3)::@14$3..@16$3=remote(stats,@5$3)
 
 * Abilities
   
@@ -93,6 +93,15 @@ Fleet footed
    craft rod (17)
    spell mastery (19) 13 spells
    immortality(20 bonus)
+   
+   mythic spell lore (mythic 1)
+   
+** mythic
+   Hard to kill - auto stabilize
+   mythic power 5/day
+   surge - add 1d6 to a roll (costs mythic power)
+   Archmage - wild archana
+   Eldrich breach (path 1)
 
 * Equipment
 
@@ -115,8 +124,7 @@ Fleet footed
   | rod daze lesser                           |   3500 |
   | haversack                                 |   1000 |
   |-------------------------------------------+--------|
-  | ring of sustenance tattoo                 |   2500 |
-  |-------------------------------------------+--------|
+  | wand of true strike                       |    750 |
   | wand of haste                             |  11250 |
   | wand of death ward                        |  21000 |
   |-------------------------------------------+--------|
@@ -150,45 +158,52 @@ spells/day
    comprehend languages
    unseen servant
    grease
-   protection from evil
+   protection from evil *
 ** 2
-   pyrotechnics
    darkvision 
    create pit
-   mirror image x2
+   mirror image x2 *
    stone call
-   invisibility
+   invisibility *
    knock
    glitterdust
+   + protection from evil, communal
+   - pyrotechnic
 ** 3
-   slow
    tounges
    fly
    displacement
    spiked pit
    sleet storm
-   mad monkeys
-   aquous orb
-   ablative sphere
+   + haste x2
+   + resist energy communal
+   - aquous orb
+   - ablative sphere
+   - mad monkeys *
+   - slow
 ** 4
    stone shape x2
    fear
    telekinetic charge
    resilient sphere
    scrying
-   dim door
-   globe of invulerability
-   teleport
+   dim door *
+   globe of invulerability *
+   teleport *
 
 ** 5
    overland flight *
-   animal growth
    suffocation
    wall of force
-   icy prision
-   dominate person
-   cloudkill
-   hungry pit
+   icy prision *
+   telepathic bond
+   
+   + dismissal
+   + cloudkill x2
+   - animal growth
+   - cloudkill *
+   - hungry pit
+   - dominate person
 
 ** 6
    disintegrate *
@@ -198,28 +213,34 @@ spells/day
    summon monster 6
    getaway
    dispell greater
+
 ** 7
-   reverse gravity
-   waves of exaustion
-   mage sword
+   reverse gravity *
    teleport greater 
-   age resistance *
    banishment
-   caustic eruption
+   + plane shift
+   + limited wish x3
+   - mage sword
+   - waves of exaustion
+   -caustic eruption
+   - age resistance *
+
 ** 8
-   frightful aspect
+   frightful aspect *
    polymorph any object
    clenched fist
-   moment of pres x2
+   moment of pres x2 **
    maze *
-   prismatic wall
+   prismatic wall *
+
 ** 9
-   time stop
-   wish
+   time stop *
    icy prision mass *
    create demiplane greater
-   mages disjunction x 2
+   mages disjunction x 2 **
    mages mag enclosure
+
+   - wish
 
 * Spellbook
 ** 1
@@ -229,10 +250,50 @@ spells/day
 *** magic missile
 *** charm person
 *** comprehend languages
-*** unseen servant
+*** unseen servant *
 *** grease
-*** protection from evil
+*** protection from good/evil/law/chaos *
+*** alarm
+*** celestial healing *
+*** infernal healing
+*** mage armor
+*** summon monster i
+*** identify
+*** true strike
+*** shocking grasp
+*** disguise self
+*** repair undead
+*** crafter's fortune
+*** expeditious excavation
+*** reduce person
+*** swift girding
+*** youthful appearance
+
 ** 2
+*** arcane lock
+*** protection from good, communal
+*** protection from evil, communal
+*** protection from chaos, communal
+*** protection from law, communal
+*** acid arrow
+*** fog cloud
+*** summon monster ii *
+*** web
+*** detect thoughts *
+*** see invisibility
+*** spell guage
+*** shatter
+*** scorching ray
+*** blur
+*** minor image
+*** spectral hand
+*** bear's endurance
+*** bull's strength
+*** cat's grace
+*** owl's wisdom
+*** fox's cunning
+*** rope trick *
+*** sculpt simulacrum
 *** pyrotechnics
 *** darkvision
 *** create pit
@@ -241,7 +302,34 @@ spells/day
 *** invisibility
 *** knock
 *** glitterdust
+*** resist energy *
+
 ** 3
+*** magic circle
+*** nondetection
+*** protection from energy
+*** resist energy communal
+*** phantom steed
+*** summon monster 3
+*** arcane sight
+*** discern value
+*** find fault
+*** toungs *
+*** blacklight
+*** daylight
+*** final sacrifice
+*** fireball *
+*** hydraulic torrent
+*** vengeful comets
+*** major image
+*** halt undead
+*** blink
+*** enter image
+*** gaseous form
+*** magic weapon greater
+*** pup shape
+*** shrink item
+*** spider climb communal
 *** slow
 *** tounges
 *** fly
@@ -251,33 +339,100 @@ spells/day
 *** mad monkeys
 *** aquous orb
 *** ablative sphere
+*** haste (mythic) *
+*** wind wall
+
 ** 4
+*** dimensional anchor
+*** true form
+*** acid pit
+*** celectial healing, greater
+*** infernal healing, greater *
+*** summon monster iv
+*** detect scrying
+*** detonate
+*** fire shield
+*** fool's teleport
+*** illusory wall
+*** greater invisibility
+*** simulacrum, lesser *
 *** stone shape 
 *** fear
 *** telekinetic charge
+*** bone shatter
+*** enervation
+*** liquify
+*** mirror transport
+*** rags to riches 
 *** resilient sphere
 *** scrying
 *** dim door
-*** globe of invulerability
-*** teleport
+*** globe of invulerability *
+*** teleport *
 
 ** 5
+*** dismissal
+*** life bubble
+*** mage's private sanctum
+*** hungry pit
+*** major creation
+*** secret chest
+*** summon infernal host
+*** summon monster v
+*** teleport
+*** wall of stone
+*** prying eyes
+*** telepathic bond
+*** major phantom object
+*** mirage arcana
+*** persistent image
+*** magic jar
+*** soulswitch
+*** angelic aspect
+*** echolocation
+*** fabricate *
+*** passwall
+*** planar adaption
+*** polymorph
+*** telekenesis
 *** overland flight 
 *** animal growth
 *** suffocation
 *** wall of force
 *** icy prision
 *** dominate person
-*** cloudkill
-*** hungry pit
+*** cloudkill *
+*** permenency
+
 ** 6
+*** antimagic field 
+*** globe of invulnerability
+*** legend lore
+*** chain lightning
+*** contingency
+*** forceful hand
 *** disintegrate
 *** permanent image
 *** cold ice strike
 *** true seeing
 *** summon monster 6
 *** getaway
+*** wall of iron
+*** geas
+*** death to undeath
+*** major curse
 *** dispell greater
+*** beast shape 4
+*** mass bull's strength
+*** mass cat's grace
+*** enemy hammer
+*** flesh to stone
+*** monsterous physique iv
+*** move earth
+*** stone toflesh
+*** sonic form
+*** undead anatomy iii
+
 ** 7
 *** banishment
 *** spell turning
@@ -286,7 +441,7 @@ spells/day
 *** create demiplane lesser
 *** mage's magnificent mansion
 *** phase door
-*** plane shift
+*** plane shift *
 *** summon monster vii
 *** greater arcane sight
 *** scrying, greater
@@ -295,7 +450,7 @@ spells/day
 *** prismatic spray
 *** project image
 *** shadow conjuration, greater
-*** simulacrum
+*** simulacrum *
 *** subjective reality
 *** control undead
 *** control construct
@@ -307,10 +462,10 @@ spells/day
 *** polymorph, greater
 *** reverse gravity
 *** statue
-*** limited wish
+*** limited wish *
 *** waves of exaustion
 *** mage sword
-*** teleport greater
+*** teleport greater *
 *** age resistance 
 *** banishment
 *** caustic eruption
@@ -331,7 +486,7 @@ spells/day
 *** frightful aspect
 *** polymorph any object
 *** clenched fist
-*** moment of pres 
+*** moment of pres *
 *** maze 
 *** prismatic wall
 *** form of the dragon 3
@@ -339,21 +494,21 @@ spells/day
 *** temporal stasis
 ** 9
 *** prismatic sphere
-*** create demiplane greater
-*** mages disjunction 
+*** create demiplane greater *
+*** mages disjunction *
 *** mages mag enclosure
 *** gate
-*** summon monster ix
+*** summon monster ix *
 *** tsunami
 *** defending sword, mass
-*** crusing hand
+*** crushing hand
 *** shades
 *** astral projection
 *** canopic conversion
 *** suffocation, mass
 *** shapechange
 *** etheraalness
-*** time stop
+*** time stop *
 *** wish
 *** icy prision mass 
 
